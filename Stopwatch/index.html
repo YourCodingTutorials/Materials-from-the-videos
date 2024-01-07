@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+</head>
+
+<body>
+    <div id="stopwatch">00:00:00</div>
+    <button onclick="startStopwatch()">Start</button>
+    <button onclick="stopStopwatch()">Stop</button>
+    <button onclick="resetStopwatch()">Reset</button>
+    <button onclick="markLap()">Lap</button>
+    <div id="lapTimes"></div>
+
+    <script>
+        let startTime;
+        let running = false;
+        let elapsed = 0;
+        let lapTimes = [];
+        let lapCount = 1;
+
+        function markLap() {
+            if (running) {
+                lapTimes.push(elapsed);
+                const lapList = document.getElementById('lapTimes');
+                const newLap = document.createElement('div');
+                newLap.innerHTML = `Lap ${lapCount} : ${formatTime(elapsed)}`;
+                lapList.appendChild(newLap);
+                lapCount++;
+            }
+        }
+
+        function startStopwatch() {
+            if (!running) {
+                startTime = Date.now() - elapsed;
+                running = true;
+                updateStopwatch();
+            }
+        }
+
+        function stopStopwatch() {
+            if (running) {
+                running = false;
+                clearTimeout(updateStopwatch);
+            }
+        }
+
+        function resetStopwatch() {
+            stopStopwatch();
+            elapsed = 0;
+            updateStopwatch();
+            lapTimes = [];
+            lapCount = 1;
+            document.getElementById('lapTimes').innerHTML = '';
+            document.getElementById('stopwatch').innerHTML = '00:00:00';
+        }
+
+        function updateStopwatch() {
+            if (running) {
+                const currentTime = Date.now();
+                elapsed = currentTime - startTime;
+                document.getElementById('stopwatch').innerHTML = formatTime(elapsed);
+                setTimeout(updateStopwatch, 10);
+            }
+        }
+
+        function formatTime(milliseconds) {
+            const date = new Date(milliseconds);
+            return date.toISOString().substr(11, 8);
+        }
+    </script>
+</body>
+
+</html>
