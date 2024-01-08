@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpine.js</title>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
+</head>
+<body>
+    <div x-data="{ isOpen: false }">
+        <button x-on:click="isOpen = !isOpen">
+            Toggle
+        </button>
+        <div x-show="isOpen">
+            Content to toggle
+        </div>
+    </div>
+</body>
+</html>
