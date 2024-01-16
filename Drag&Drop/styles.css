@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+}
+
+#draggable {
+    width: 100px;
+    height: 50px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+    cursor: move;
+}
+
+#droppable {
+    width: 150px;
+    height: 100px;
+    background-color: #f2f2f2;
+    border: 2px dashed #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
