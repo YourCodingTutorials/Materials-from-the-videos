@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Picker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #color-picker {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="color" id="color-picker">
+    <div id="color-codes"></div>
+
+    <script>
+        const colorPicker = document.getElementById('color-picker');
+        const colorCodes = document.getElementById('color-codes');
+
+        colorPicker.addEventListener('input', function () {
+            const color = colorPicker.value;
+            colorCodes.innerHTML = `
+                <p>Hex: ${color}</p>
+                <p>RGB: ${hexToRgb(color)}</p>
+                <p>RGBA: ${hexToRgba(color, 0.5)}</p>
+            `;
+        });
+
+        function hexToRgb(hex) {
+            const bigint = parseInt(hex.substring(1), 16);
+            const r = (bigint >> 16) & 255;
+            const g = (bigint >> 8) & 255;
+            const b = bigint & 255;
+            return `rgb(${r}, ${g}, ${b})`;
+        }
+
+        function hexToRgba(hex, alpha) {
+            const bigint = parseInt(hex.substring(1), 16);
+            const r = (bigint >> 16) & 255;
+            const g = (bigint >> 8) & 255;
+            const b = bigint & 255;
+            return `rgb(${r}, ${g}, ${b}, ${alpha})`;
+        }
+    </script>
+</body>
+
+</html>
