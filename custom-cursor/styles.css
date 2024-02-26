@@ -1,0 +1,16 @@
+html,
+body {
+    cursor: none;
+}
+
+.custom-cursor {
+    position: fixed;
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    background-image: url('custom-cursor.png');
+    background-size: cover;
+    z-index: 9999;
+    pointer-events: none;
+    transform: rotate(-15deg);
+}
