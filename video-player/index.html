@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Video Player</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+
+<body>
+    <div id="video-container">
+        <video id="myVideo">
+            <source src="to-do-list.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div id="controls">
+            <button id="playPauseButton"><i class="fas fa-play"></i></button>
+            <button id="rewindButton"><i class="fas fa-backward"></i></button>
+            <button id="fastForwardButton"><i class="fas fa-forward"></i></button>
+            <button id="fullScreenButton"><i class="fas fa-expand"></i></button>
+            <button id="muteButton"><i class="fas fa-volume-up"></i></button>
+            <button id="volumeUpButton"><i class="fas fa-volume-up"></i></button>
+            <button id="volumeDownButton"><i class="fas fa-volume-down"></i></button>
+            <span id="volumeText">Volume: 100%</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
